@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Attendence</title>
+
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="../static/bootstrap.css">
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+
+<body>
+    <div class="container-fluid my-2">
+        <nav class="navbar navbar-dark bg-primary  navbar-expand-lg">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/captureAt" target="_self">Capture Attendence</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Print Sheet</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active">About Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+
+    </div>
+    <div class="container">
+        <video id="video" width="320" height="240" autoplay></video>
+        <br>
+        <button id="start-camera">Start Camera</button>
+        <button id="stop-camera">Stop Camera</button>
+
+
+        <!-- <input type="submit" value="submit" onclick="sndajax()"> -->
+        <div id="dataurl-container">
+            <canvas id="canvas" width="320" height="240"></canvas>
+        </div>
+
+    </div>
+    <div class="container">
+        <label for="myname">File Name</label>
+        <input type="text" name="myname" id="myname">
+        <button id="start_capture">Start Capture</button><button id="click-photo">Click Photo</button>
+    </div>
+    <div class="container" id="form-id" style="background-color: rgb(165, 237, 129);">
+        <form>
+            <div class="m-5" style="margin-top: 150px;">
+                <label for="studname">Enter Name</label>
+                <input type="text" name="studname" id="studname"><br>
+            </div>
+            <div class="m-5">
+                <label for="studreg">Enter Reg No</label>
+                <input type="text" name="studreg" id="studreg">
+            </div>
+        </form>    
+        <div class="m-5">
+            <button onclick="sendform()">Submit</button>
+        </div>
+            
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Footer Here</span>
+        </div>
+    </footer>
+</body>
+<script src="../static/bootstrap.js"> </script>
+<script src="../static/script.js"> </script>
+<script src="../static/jquerymin.js"> </script>
+<!-- <script src="{{ url_for('static',filename='bootstrap.js') }}"> </script>
+<script src="{{ url_for('static',filename='script.js') }}"> </script>
+<script src="{{ url_for('static',filename='jquerymin.js') }}"> </script> -->
+
+</html>

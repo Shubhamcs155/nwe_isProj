@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capture | Mysite</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <div class="container m-5">
+    <nav class="navbar navbar-dark bg-primary  navbar-expand-lg">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="/captureAt" target="_self">Capture Attendence</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Print Sheet</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active">About Us</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <style>
+      #camera {
+        width: 350px;
+        height: 350px;
+        border: 1px solid black;
+      }
+    </style>
+  </div>
+  <div class="container">
+    <div id="camera">
+      
+    </div>
+    <button onclick="take_snapshot()">Take Snap</button>
+    <button onclick="Webcam.reset()">Turn Off</button>
+    <div id="results"></div>
+  </div>
+
+</body>
+<script src="{{ url_for('static',filename='bootstrap.js') }}"> </script>
+<script src="{{ url_for('static',filename='script.js') }}"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
+<script>
+  // Load all webcam
+  let kk = true;
+
+  const setMyWebCam = async () => {
+      await Webcam.set({
+        width:350,
+        height:350,
+        image_format:'jpeg',
+        jpeg_quality:90
+      });
+    };
+  
+
+  Webcam.attach("#camera");
+
+  async function take_snapshot(){
+    if(kk===false){
+      await setMyWebCam();
+    }
+    
+    Webcam.snap(function(data_uri){
+      document.getElementById("results").innerHTML = '<img src="' + data_uri + '"/>' ;
+    });
+  }
+
+  function turnOff() {
+    kk = false;
+    Webcam.off();
+    Webcam.reset();
+  }
+</script>
+
+</html>
